@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>User Profile</h2>
+<p>Welcome, {{ user.username }}!</p>
+<p>Bio: {{ user_profile.bio }}</p>
+<p>Location: {{ user_profile.location }}</p>
+<p>Birth Date: {{ user_profile.birth_date }}</p>
+
+<h3>Your Posts</h3>
+{% if posts %}
+    <ul>
+    {% for post in posts %}
+        <li>
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.content }}</p>
+            <small>Posted on: {{ post.created_at }}</small>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven't made any posts yet.</p>
+{% endif %}
+{% endblock %}

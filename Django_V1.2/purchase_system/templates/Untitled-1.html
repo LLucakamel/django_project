@@ -1,0 +1,14 @@
+<h1>Welcome to the Purchase System</h1>
+{% if user.is_authenticated %}
+    <p>Hi Mr.{{ user.username }}! Welcome back. <br> {% now "F j, Y" %}.</p>
+{% else %}
+    <p>Welcome, guest! Consider <a href="{% url 'login' %}">logging in</a>. Today is {% now "F j, Y" %}.</p>
+{% endif %}
+<p>Choose an option:</p>
+<ul>
+    <li><a href="{% url 'products:list' %}">View Products</a></li>
+    <li><a href="{% url 'orders:list' %}">View Orders</a></li>
+    {% if user.is_superuser %}
+        <li><a href="{% url 'user_management:user_list' %}">Manage Users</a></li>
+    {% endif %}
+</ul>

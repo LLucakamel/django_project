@@ -1,0 +1,343 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- Load style.css using static tag -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header>
+    <div id="header-container">
+        <button id="toggle-nav" class="header-button">
+          <span class="arrow">&#8652;</span>
+        </button>
+        <div class="user-info" >
+          <img src="{% static 'images/user.jpg' %}" alt="User">
+          <span class="user-name" style="padding: 10px;">{{ user.username }}</span>
+          <!-- Dropdown Menu for user actions -->
+          <div class="user-actions">
+            <a class="nav-link dropdown-toggle" href="#" id="userMenuToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                &#x1F843 <!-- Font Awesome User Icon -->
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userMenuToggle">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Visit Profile</a></li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item">Logout</button>
+                    </form>
+                </li>
+              </ul>
+          </div>
+        </div>
+    </div>
+  </header>
+
+  <div id="base-content">
+    <div class="logo-container">
+      <a href="/">
+        <svg class="logo" id="Layer_5" data-name="Layer 5" width="30%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792.85 1847.9">
+            <defs>
+                <style>
+                    .cls-1 {
+                        fill: #7d7d7d;
+                        stroke: #7d7d7d;
+                        stroke-miterlimit: 10;
+                        stroke-width: 3px;
+                    }
+                    .cls-2 {
+                        fill: #f47920;
+                    }
+                </style>
+            </defs>
+            <path class="cls-1" d="M2394.31,1514.34,1500.24,2408.4,605.69,1513.85l395.73-395.73,55.65,55.65a560.39,560.39,0,0,0-120.22,346.42v5c.64,278.68,205.49,509.6,473.42,552.2,2.15.35,4.32.68,6.48,1,1.73.26,3.47.51,5.21.74s3.39.47,5.1.68l.74.1c2,.27,4.09.52,6.15.75,1.47.18,3,.35,4.43.5l1.49.16h0q2.79.3,5.59.57c1.18.12,2.38.23,3.57.33s2.36.21,3.56.3l2.82.23h0l4.22.31h.08l4.92.32.78,0c1.69.1,3.39.2,5.07.28l2.33.12.47,0h0l2.82.12,2.7.11h.31l2.18.07,3.13.1h.48l3.63.08,3.62.06q3.63,0,7.27.05h.61q3.63,0,7.27-.05l3.62-.06,3.63-.08h.48l3.13-.1,2.17-.07h.32l2.69-.11,2.83-.12h0l.47,0,2.32-.12c1.69-.08,3.38-.18,5.08-.28l.77,0,4.92-.32h.08l4.23-.31h0l2.82-.23c1.19-.09,2.38-.19,3.56-.3s2.38-.21,3.57-.33l5.58-.57h0l1.49-.16c1.48-.15,3-.32,4.44-.5q3.07-.34,6.15-.75l.74-.1c1.7-.21,3.4-.44,5.1-.68s3.47-.48,5.2-.74c2.17-.31,4.34-.64,6.48-1,267.94-42.6,472.78-273.52,473.42-552.2,0-.44,0-.89,0-1.33v-1.15c0-.82,0-1.65,0-2.48a560.44,560.44,0,0,0-120.21-346.42l55.65-55.65Z" transform="translate(-603.57 -562.62)" />
+            <path class="cls-2" d="M2394.33,721.28l-894,894.06L605.66,720.73,763.77,562.62c67.55,66.66,260.6,244,501.65,291.49,49.07,9.66,135,20.8,234.17,20.89,99.48.09,185.94-11,235.63-20.71C1976.3,807,2169.28,630.42,2237,563.9Z" transform="translate(-603.57 -562.62)" />
+        </svg>
+        <h3 class="txt-tit1">Alyafour</h3>
+        <h3 class="txt-tit2">Construction</h3>
+    </a>
+    </div>
+    <nav id="sidebar">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="/"><svg class="icon"><use xlink:href="#dashboard-icon"></use></svg> Dashboard</a>        </li>
+
+        
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#purchases-icon"></use></svg> Purchases</a>
+          <ul class="dropdown">
+            <li><a href="{% url 'material_request' %}">Material Request</a></li>
+            <li><a href="Purchase-Quotations.html">Purchase Quotations</a></li>
+            <li><a href="Purchase-Commands.html">Purchase Commands</a></li>
+            <li><a href="Purchase-Invoices.html">Purchase Invoices</a></li>
+            <li><a href="Purchase-Returns.html">Purchase Returns</a></li>
+            <li><a href="City-Notices.html">City Notices</a></li>
+            <li><a href="Supplier-Management.html">Supplier Management</a></li>
+            <li><a href="Supplier-Payments.html">Supplier Payments</a></li>
+            <li><a href="Purchase-Invoices-Settings.html">Purchase Invoices Settings</a></li>
+            <li><a href="Supplier-Settings.html">Supplier Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#sales-icon"></use></svg> Sales</a>
+          <ul class="dropdown">
+            <li><a href="Billing-Management.html">Billing Management</a></li>
+            <li><a href="Create-an-Invoice.html">Create an Invoice</a></li>
+            <li><a href="Manage-Quote.html">Manage Quote</a></li>
+            <li><a href="Create-a-Quote.html">Create a Quote</a></li>
+            <li><a href="Credit-Notices.html">Credit Notices</a></li>
+            <li><a href="Returned-Invoices.html">Returned Invoices</a></li>
+            <li><a href="Recurring-Bills.html">Recurring Bills</a></li>
+            <li><a href="Customer-Payments.html">Customer Payments</a></li>
+            <li><a href="Sales-Settings.html">Sales Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#reservations-icon"></use></svg> Reservations</a>
+          <ul class="dropdown">
+            <li><a href="Manage-Reservations.html">Manage Reservations</a></li>
+            <li><a href="Add-Reservation.html">Add Reservation</a></li>
+            <li><a href="Manage-Booking-Settings.html">Manage Booking Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#installment-icon"></use></svg> Installment Management</a>
+          <ul class="dropdown">
+            <li><a href="Installment-Agreements.html">Installment Agreements</a></li>
+            <li><a href="Installments.html">Installments</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#rental-icon"></use></svg> Rental and Unit Management</a>
+          <ul class="dropdown">
+            <li><a href="Units.html">Units</a></li>
+            <li><a href="Booking-Orders.html">Booking Orders</a></li>
+            <li><a href="Pricing-rules-for-Rentals.html">Pricing rules for Rentals</a></li>
+            <li><a href="Seasonal-Prices.html">Seasonal Prices</a></li>
+            <li><a href="Settings.html">Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#work-orders-icon"></use></svg> Work Orders</a>
+          <ul class="dropdown">
+            <li><a href="Work-Orders.html">Work Orders</a></li>
+            <li><a href="Add-a-Job-Order.html">Add a Job Order</a></li>
+            <li><a href="Work-Orders-Settings.html">Work Orders Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#business-cycles-icon"></use></svg> Business Cycles</a>
+          <ul class="dropdown">
+            <li><a href="Lease-contract-Management.html">Lease contract Management</a></li>
+            <li><a href="Construction-Project-Management.html">Construction Project Management</a></li>
+            <li><a href="Business-Cycles-Settings.html">Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#clients-icon"></use></svg> Clients</a>
+          <ul class="dropdown">
+            <li><a href="Customer-Management.html">Customer Management</a></li>
+            <li><a href="Add-a-new-Customer.html">Add a new Customer</a></li>
+            <li><a href="Appointments.html">Appointments</a></li>
+            <li><a href="Contact-List.html">Contact List</a></li>
+            <li><a href="Customer-Relationship-Management.html">Customer Relationship Management</a></li>
+            <li><a href="Client-Settings.html">Client Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#insurance-icon"></use></svg> Insurance Agents</a>
+          <ul class="dropdown">
+            <li><a href="Insurance-Agents-Management.html">Insurance Agents Management</a></li>
+            <li><a href="Add-an-Insurance-Company.html">Add an Insurance Company</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#inventory-icon"></use></svg> Inventory</a>
+          <ul class="dropdown">
+            <li><a href="Products-and-Services.html">Products and Services</a></li>
+            <li><a href="Warehouse-Authorization-Management.html">Warehouse Authorization Management</a></li>
+            <li><a href="Price-List.html">Price List</a></li>
+            <li><a href="Warehouses.html">Warehouses</a></li>
+            <li><a href="Inventory-Management.html">Inventory Management</a></li>
+            <li><a href="Stock-Settings.html">Stock Settings</a></li>
+            <li><a href="Product-Settings.html">Product Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#finance-icon"></use></svg> Finance</a>
+          <ul class="dropdown">
+            <li><a href="Expenses.html">Expenses</a></li>
+            <li><a href="Receipt.html">Receipt</a></li>
+            <li><a href="Safes-and-Bank-Accounts.html">Safes and Bank Accounts</a></li>
+            <li><a href="Financial-Settings.html">Financial Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#general-accounts-icon"></use></svg> General Accounts</a>
+          <ul class="dropdown">
+            <li><a href="Daily-Restrictions.html">Daily Restrictions</a></li>
+            <li><a href="Add-a-Restriction.html">Add a Restriction</a></li>
+            <li><a href="Accounts-Guide.html">Accounts Guide</a></li>
+            <li><a href="Cost-Centers.html">Cost Centers</a></li>
+            <li><a href="Assets.html">Assets</a></li>
+            <li><a href="General-Account-Settings.html">General Account Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#checks-role-icon"></use></svg> Checks Role</a>
+          <ul class="dropdown">
+            <li><a href="Paid-Checks.html">Paid Checks</a></li>
+            <li><a href="Received-Checks.html">Received Checks</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#requests-icon"></use></svg> Requests</a>
+          <ul class="dropdown">
+            <li><a href="Order-Management.html">Order Management</a></li>
+            <li><a href="Requests-Settings.html">Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#employees-icon"></use></svg> Employees</a>
+          <ul class="dropdown">
+            <li><a href="Staff-Management.html">Staff Management</a></li>
+            <li><a href="Managing-Employee-Roles.html">Managing Employee Roles</a></li>
+            <li><a href="Shift-Management.html">Shift Management</a></li>
+            <li><a href="Employees-Settings.html">Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#reports-icon"></use></svg> Reports</a>
+          <ul class="dropdown">
+            <li><a href="Sales-Reports.html">Sales Reports</a></li>
+            <li><a href="Purchase-Reports.html">Purchase Reports</a></li>
+            <li><a href="General-Accounts-Reports.html">General Accounts Reports</a></li>
+            <li><a href="Check-Reports.html">Check Reports</a></li>
+            <li><a href="SMS-Reports.html">SMS Reports</a></li>
+            <li><a href="Rental-Reports.html">Rental Reports</a></li>
+            <li><a href="Business-Cycle-Reports.html">Business Cycle Reports</a></li>
+            <li><a href="Work-Order-Reports.html">Work Order Reports</a></li>
+            <li><a href="Customers-Reports.html">Customers Reports</a></li>
+            <li><a href="Inventory-Reports.html">Inventory Reports</a></li>
+            <li><a href="Account-Activity-Log.html">Account Activity Log</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#branches-icon"></use></svg> Branches</a>
+          <ul class="dropdown">
+            <li><a href="Branch-Management.html">Branch Management</a></li>
+            <li><a href="Add-a-Branch.html">Add a Branch</a></li>
+            <li><a href="Branch-Settings.html">Branch Settings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#templates-icon"></use></svg> Templates</a>
+          <ul class="dropdown">
+            <li><a href="Printable-Templates.html">Printable Templates</a></li>
+            <li><a href="Ready-made-Invoice-Templates.html">Ready-made Invoice Templates</a></li>
+            <li><a href="Email-Templates.html">Email Templates</a></li>
+            <li><a href="SMS-Templates.html">SMS Templates</a></li>
+            <li><a href="Terms-and-Conditions.html">Terms and Conditions</a></li>
+            <li><a href="File-and-Document-Management.html">File and Document Management</a></li>
+            <li><a href="Automated-Submission-Rules.html">Automated Submission Rules</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#"><svg class="icon"><use xlink:href="#settings-icon"></use></svg> Settings</a>
+          <ul class="dropdown">
+            <li><a href="Account-Information.html">Account Information</a></li>
+            <li><a href="Account-Settings.html">Account Settings</a></li>
+            <li><a href="SMTP-Settings.html">SMTP Settings</a></li>
+            <li><a href="Payment-Methods.html">Payment Methods</a></li>
+            <li><a href="SMS-Settings.html">SMS Settings</a></li>
+            <li><a href="Sequential-Numbering-Settings.html">Sequential Numbering Settings</a></li>
+            <li><a href="Tax-Settings.html">Tax Settings</a></li>
+            <li><a href="Application-Management.html">Application Management</a></li>
+            <li><a href="System-Logo-and-Colors.html">System Logo and Colors</a></li>
+            <li><a href="API.html">API</a></li>
+          </ul>
+        </li>
+      </ul>
+      <svg style="display: none;">
+        <!-- Updated dashboard-icon with a simpler, more modern design -->
+        <symbol id="dashboard-icon" viewBox="0 0 24 24">
+          <path d="M3 21h18V3H3v18zM5 5h14v14H5V5zm3 3v8h8V8H8z"></path>
+        </symbol>
+        <!-- Updated filter-icon with cleaner lines -->
+        <symbol id="filter-icon" viewBox="0 0 24 24">
+          <path d="M3 5h18v2H3V5zm3 6h12v2H6v-2zm3 6h6v2H9v-2z"></path>
+        </symbol>
+        <!-- Updated sales-icon to be more visually appealing -->
+        <symbol id="sales-icon" viewBox="0 0 24 24">
+          <path d="M2 22h20V2H2v20zM4 4h16v16H4V4zm6 3v5h4V7h-4zm0 7v5h4v-5h-4z"></path>
+        </symbol>
+        <!-- Continue updating other icons similarly -->
+        <symbol id="rental-icon" viewBox="0 0 24 24">
+          <path d="M4 20h16V4H4v16zm2-14h12v12H6V6zm3 3v6h6V9H9z"></path>
+        </symbol>
+        <symbol id="work-orders-icon" viewBox="0 0 24 24">
+          <path d="M4 22h16V2H4v20zm2-2V4h12v16H6zm3-13h6v2H9v-2zm0 4h6v2H9v-2zm0 4h6v2H9v-2z"></path>
+        </symbol>
+        <symbol id="business-cycles-icon" viewBox="0 0 24 24">
+          <path d="M20.71 7.29L19.29 5.87 12 13.17 9.71 10.88 8.29 12.29 12 16 20.71 7.29zM4 2c-1.1 0-1.99 0.9-1.99 2L2 18c0 1.1 0.89 2 1.99 2H20c1.1 0 2-0.9 2-2V4c0-1.1-0.9-2-2-2H4zm0 16V4h16v14H4z"></path>
+        </symbol>
+        <symbol id="clients-icon" viewBox="0 0 24 24">
+          <path d="M16 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM4 14v-1c0-2.21 3.58-3.98 8-3.98s8 1.77 8 3.98v1H4zm12-6c1.1 0 2 0.9 2 2s-0.9 2-2 2-2-0.9-2-2 0.9-2 2-2zM4 17v2h16v-2H4z"></path>
+        </symbol>
+        <symbol id="insurance-icon" viewBox="0 0 24 24">
+          <path d="M19 3h-4V1h-2v2H8V1H6v2H2v17h20V3h-3zm-1 2h2v3H4V5h2v2h2V5h4v2h2V5h1V4h-6v1h-2V4h-4v1H7V4H3v1h15V4zM3 19V7h18v12H3z"></path>
+        </symbol>
+        <symbol id="purchases-icon" viewBox="0 0 24 24">
+          <path d="M7 2v2H3.5l1 18H19.5l1-18H17V2H7zm10 18H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7v-2h10v2z"></path>
+        </symbol>
+        <symbol id="reservations-icon" viewBox="0 0 24 24">
+          <path d="M19 3h-1V1H6v2H5C3.89 3 3 3.89 3 5v15c0 1.11 0.89 2 2 2h14c1.11 0 2-0.89 2-2V5c0-1.11-0.89-2-2-2zM12 19c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"></path>
+        </symbol>
+        <symbol id="installment-icon" viewBox="0 0 24 24">
+          <path d="M21 11.5l-7-4.66V3h-4v3.84l-7 4.66V13h2v6h14v-6h2v-1.5zM12 4h2v2h-2V4zm-5 9v4H5v-4h2zm3 4v-4h4v4h-4zm6 0v-4h2v4h-2zm2-5.5h-2.5l-3.5 2.33-3.5-2.33H6.5l5.5-3.67 5.5 3.67z"></path>
+        </symbol>
+        <symbol id="inventory-icon" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-2 0.9-2 2v14c0 1.1 0.9 2 2 2h16c1.1 0 2-0.9 2-2V6c0-1.1-0.9-2-2-2zM4 6h16v14H4V6zm3 2v2h2V8H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V8h-2zm0 4v2h2v-2h-2zm0 4v2h2v-2h-2zm4-8v2h2V8h-2zm0 4v2h2v-2h-2zm0 4v2h2v-2h-2z"></path>
+        </symbol>
+        <symbol id="finance-icon" viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 0.9-2 2v14c0 1.1 0.9 2 2 2h14c1.1 0 2-0.9 2-2V5c0-1.1-0.9-2-2-2zm0 16H5V5h14v14zm-7-9V5h2v5h3l-4 4-4-4h3zm-4 7h2v-2H8v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2z"></path>
+        </symbol>
+        <symbol id="general-accounts-icon" viewBox="0 0 24 24">
+          <path d="M21 11.5l-7-4.66V3h-4v3.84l-7 4.66V13h2v6h14v-6h2v-1.5zM12 4h2v2h-2V4zm-5 9v4H5v-4h2zm3 4v-4h4v4h-4zm6 0v-4h2v4h-2zm2-5.5h-2.5l-3.5 2.33-3.5-2.33H6.5l5.5-3.67 5.5 3.67z"></path>
+        </symbol>
+        <symbol id="checks-role-icon" viewBox="0 0 24 24">
+          <path d="M18 5H6c-1.1 0-2 0.9-2 2v10c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2V7c0-1.1-0.9-2-2-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"></path>
+        </symbol>
+        <symbol id="requests-icon" viewBox="0 0 24 24">
+          <path d="M18 3H6c-1.1 0-2 0.9-2 2v14c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2V5c0-1.1-0.9-2-2-2zm0 16H6V5h12v14zm-2-8H8v2h8v-2zm0-4H8v2h8V7zm0 8H8v2h8v-2z"></path>
+        </symbol>
+        <symbol id="employees-icon" viewBox="0 0 24 24">
+          <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"></path>
+        </symbol>
+        <symbol id="reports-icon" viewBox="0 0 24 24">
+          <path d="M3 13h8V3H3v10zm10 8h8v-6h-8v6zm-10 0h8v-8H3v8zm10-18v8h8V3h-8z"></path>
+        </symbol>
+        <symbol id="branches-icon" viewBox="0 0 24 24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+        </symbol>
+        <symbol id="templates-icon" viewBox="0 0 24 24">
+          <path d="M21 7h-6.59l-7.7-7H3c-1.1 0-2 0.9-2 2v16c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2V9c0-1.1-0.9-2-2-2zM7 4h2v2H7V4zm12 16H3v-2h16v2zm0-4H3v-2h16v2zm0-4H3v-2h16v2z"></path>
+        </symbol>
+        <symbol id="settings-icon" viewBox="0 0 24 24">
+          <path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.56c.18-.14.22-.41.09-.61l-1.92-3.32c-.13-.22-.39-.28-.61-.19l-2.39.96c-.5-.39-1.03-.73-1.61-1.01l-.36-2.52c-.03-.23-.24-.4-.47-.4h-3.84c-.23 0-.43.17-.47.4l-.36 2.52c-.58.28-1.11.62-1.61 1.01l-2.39-.96c-.23-.09-.48-.03-.61.19l-1.92 3.32c-.13.22-.1.48.09.61l2.03 1.56c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.56c-.18.14-.22.41-.09.61l1.92 3.32c.13.22.39.28.61.19l2.39-.96c.5.39 1.03.73 1.61 1.01l.36 2.52c.03.23.24.4.47.4h3.84c.23 0 .43-.17.47-.4l.36-2.52c.58-.28 1.11-.62 1.61-1.01l2.39.96c.23.09.48.03.61-.19l1.92-3.32c.13-.22.1-.48-.09-.61l-2.03-1.56zm-7.14 1.56c-1.68 0-3-1.32-3-3s1.32-3 3-3 3 1.32 3 3-1.32 3-3 3z"></path>
+        </symbol>
+      </svg>
+    </nav>
+  </div>
+  <main id="main-content">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

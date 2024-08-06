@@ -1,0 +1,339 @@
+/* Container Styles */
+.container {
+    max-width: 100%; /* Full width */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Header Styles */
+.container-header {
+    background-color: #FFA500; /* Orange background */
+    color: #ffffff; /* White text */
+    padding: 10px 20px; /* Padding around text */
+    font-size: 24px; /* Larger font size */
+    border-top-left-radius: 5px; /* Rounded top left corner */
+    border-top-right-radius: 5px; /* Rounded top right corner */
+}
+
+/* Table Styles */
+table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Remove space between borders */
+    margin-top: 20px; /* Space below header */
+}
+
+th, td {
+    padding: 8px; /* Adequate padding */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Subtle separation between rows */
+}
+
+th {
+    background-color: #f2f2f2; /* Light grey background for headers */
+}
+
+/* Button Styles */
+.button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Input Styles */
+.input-field {
+    padding: 8px;
+    margin: 5px 0; /* Margin for vertical spacing */
+    box-sizing: border-box; /* Border box sizing */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 100%; /* Full width on small screens */
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .input-field, .button {
+        width: 100%; /* Full width for inputs and buttons */
+    }
+}
+
+/* Button Container Styles */
+.containerbtn {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+    padding: 5px;
+    border-radius: 0%;
+}
+
+.containerbtn input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+/* Pagination Styles */
+.pagination {
+    position: relative;
+    top: -60px;
+    left: 100px;
+    display: flex;
+    margin: 5px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    margin: 10px;
+    background-color: #dedede;
+    color: #656565;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #b9b9b9;
+}
+
+/* Actions Button Styles */
+.actionsLPO button {
+    position: relative;
+    top: -120px;
+    left: 80%;
+    padding: 10px 15px;
+    background-color: #199035;
+    color: #fff;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.actionsLPO button i {
+    margin-right: 5px;
+}
+
+.actionsLPO button:hover {
+    background-color: #166227;
+}
+
+/* Advanced Filter and Input Styles */
+.advanced-filter-bar,
+.input-group,
+.date-group {
+    position: relative;
+    top: -100px;
+}
+
+.input-group,
+.date-group,
+.action-buttons,
+.advanced-filter-bar,
+.log-header,
+.log-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group input,
+.input-group select,
+.date-group input,
+.advanced-filter-bar select {
+    width: calc(100% - 20px); /* Adjust width to fit container */
+    margin: 5px 10px; /* Space out the inputs */
+    padding: 8px; /* Padding for better text visibility */
+    border: 1px solid #d8c6b5;
+    border-radius: 0px;
+}
+
+/* Action Buttons Styles */
+.action-buttons button {
+    margin: 5px; /* Space between buttons */
+    padding: 8px 16px; /* Adequate padding for touch targets */
+    background-color: #4CAF50; /* Consistent color for actions */
+    color: white;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+.action-buttons button:hover {
+    background-color: #949494;
+}
+
+/* Log Header and Entry Styles */
+.log-header span,
+.log-entry div {
+    flex: 1;
+    padding: 10px;
+    border-bottom: 1px solid #a7a7a7;
+}
+
+.log-header {
+    background-color: #d1d1d1;
+    color: #7b7b7b;
+    font-weight: bold;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.log-entry {
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.log-entry:hover {
+    background-color: #e3e3e3;
+}
+
+.log-entry input[type="checkbox"] {
+    margin: 15px;
+}
+
+/* Additional Action Button Styles */
+.action-buttons1 {
+    position: relative;
+}
+
+.action-toggle {
+    color: #656565;
+}
+
+.action-buttons1 button.action-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1px;
+    color: #656565;
+}
+
+.action-buttons1 ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+.action-buttons1:hover ul {
+    display: block;
+}
+
+.action-buttons1 li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.action-buttons1 li:hover {
+    background-color: #f1f1f1;
+}
+
+.advanced-filter-bar {
+    display: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container, .actionsLPO, .input-group, .date-group {
+        width: 100%; /* Full width on small screens */
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .input-group input[type="text"], .input-group select, .action-buttons button {
+        width: 100%; /* Full width for inputs and buttons */
+    }
+}
+
+/* Focus Styles */
+.input-group input:focus,
+.input-group select:focus,
+.date-group input:focus,
+.advanced-filter-bar select:focus {
+    border-color: #87CEFA;
+    box-shadow: 0 0 5px rgba(135, 206, 250, 0.5);
+    outline: none;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px; /* Adequate padding */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Subtle separation between rows */
+}
+
+/* General Styles for the Form */
+.form-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Styles for Input Fields */
+.input-field {
+    padding: 8px;
+    margin-right: 10px;
+    width: 150px; /* Adjust width as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Styles for the Button */
+.button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Styles for Dropdowns and Search Fields */
+.select-field, .search-field {
+    padding: 8px;
+    margin-right: 10px;
+    width: 200px; /* Adjust width as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .input-field, .select-field, .search-field, .button {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 10px; /* Add space between elements */
+    }
+}

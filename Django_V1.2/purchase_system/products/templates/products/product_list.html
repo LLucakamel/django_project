@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Product List</h2>
+<a href="{% url 'products:export_products' %}">Export Products to Excel</a>
+<a href="{% url 'products:import_products' %}">Import Products from Excel</a>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<ul>
+{% for product in products %}
+    <li>{{ product.name }} - ${{ product.price }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

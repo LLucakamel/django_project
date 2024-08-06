@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2 class="title">Material Request</h2>
+    <div class="container"> 
+        <div class="row">
+            <div class="col">
+                <label for="request-date">Request Date</label>
+                <input type="datetime-local" id="request-date" name="request-date" readonly>
+            </div>
+            <div class="col">
+                <label for="supply-date">Supply Date</label>
+                <input type="date" id="supply-date" name="supply-date">
+            </div>
+        </div>
+        <section class="order-details">
+            <div class="row">
+                <div class="col">
+                    <label for="vendor-name"> Name</label>
+                    <input type="text" id="vendor-name" name="vendor-name">
+                </div>
+                <div class="col">
+                    <label for="lpo-no">Material Request NO</label>
+                    <input type="text" id="lpo-no" name="lpo-no">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="vendor-number">Project Name</label>
+                    <input type="text" id="vendor-number" name="vendor-number">
+                </div>
+                <div class="col">
+                    <label for="site-contact-number">Project Code</label>
+                    <input type="text" id="site-contact-number" name="site-contact-number">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="project-name">Project Location</label>
+                    <input type="text" id="project-name" name="project-name">
+                </div>
+                <div class="col">
+                    <label for="project-code">Project Consultant</label>
+                    <input type="text" id="project-code" name="project-code">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="project-location">Project stage</label>
+                    <input type="text" id="project-location" name="project-location">
+                </div>
+            </div>
+        </section>
+        
+        <section class="item-details">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="number">Sr. No.</th>
+                        <th class="code">Item Code</th>
+                        <th class="item-Name">Item Name</th>
+                        <th class="quant">Pic</th>
+                        <th class="unit">Qty</th>
+                        <th class="unit-price">Item Uni</th>
+                        <th class="remark">Remark</th>
+                        <th class="th2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="item-details-body">
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" name="item-code"></td>
+                        <td><input type="text" name="item-name"></td>
+                        <td>
+                            <div class="drop-zone">
+                                <span>Drag</span>
+                                <input type="file" name="pic" accept="image/*" style="display:none;">
+                                <img src="#" alt="Preview" style="display:none;">
+                            </div>
+                        </td>
+                        <td><input type="number" name="qty"></td>
+                        <td><input type="text" name="item-unit"></td>
+                        <td><input type="text" name="remark"></td>
+                        <td><button class="remove-row-btn">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="add-row-btn" id="add-row-btn">Add Row</button>            
+        </section>
+        <br>
+        <section class="remarks">
+            <h2>Remarks / Instructions:</h2>
+            <p><b>Clearly Define Required Materials:</b> The requester should precisely specify the materials needed, along with technical specifications and required quantities for each item.</p>
+            <p><b>Required Deadlines:</b> The requester should set the final deadlines by which these materials are needed to ensure they are available in time for the project or work.</p>
+            <p><b>Any Special Requirements:</b> If there are any special requirements related to delivery, quality, or any other conditions, the requester should clearly specify them in the purchase request.</p>
+        </section>
+        <section class="signatures">
+            <div class="row">
+                <div class="col signature-input">
+                    <label for="requester-signature">Requester Signature</label>
+                    <select id="requester-signature" name="requester-signature">
+                        <option value="">Select Signature</option>
+                        <option value="signature1">Signature 1</option>
+                        <option value="signature2">Signature 2</option>
+                        <option value="signature3">Signature 3</option>
+                    </select>
+                    
+                    <label for="supplier-signature">Site Engineer Signature</label>
+                    <select id="supplier-signature" name="supplier-signature">
+                        <option value="">Select Signature</option>
+                        <option value="signature1">Signature 1</option>
+                        <option value="signature2">Signature 2</option>
+                        <option value="signature3">Signature 3</option>
+                    </select>
+                    
+                    <label for="store-keeper-signature">Store Keeper Signature</label>
+                    <select id="store-keeper-signature" name="store-keeper-signature">
+                        <option value="">Select Signature</option>
+                        <option value="signature1">Signature 1</option>
+                        <option value="signature2">Signature 2</option>
+                        <option value="signature3">Signature 3</option>
+                    </select>
+                    
+                    <label for="other-signature">Other Signature</label>
+                    <select id="other-signature" name="other-signature">
+                        <option value="">Select Signature</option>
+                        <option value="signature1">Signature 1</option>
+                        <option value="signature2">Signature 2</option>
+                        <option value="signature3">Signature 3</option>
+                    </select>
+                </div>
+                <div class="col signature-date-input">
+                    <label for="requester-date">Requester Signature Date</label>
+                    <input type="datetime-local" id="requester-date" name="requester-date">
+                    
+                    <label for="supplier-date">Date</label>
+                    <input type="date" id="supplier-date" name="supplier-date">
+                    
+                    <label for="store-keeper-date">Date</label>
+                    <input type="date" id="store-keeper-date" name="store-keeper-date"> 
+                    
+                    <label for="others-date">Date</label>
+                    <input type="date" id="others-date" name="others-date">
+                </div>
+            </div>
+        </section>
+        
+        <a href="MR-Review.html"><button class="submit-btn" id="submit-btn">Save and Send</button></a>
+        <a href="Material-Request.html"><button class="cancel-btn" id="cancel-btn">Cancel</button></a>
+    </div>
+ 
+
+
+{% endblock %}

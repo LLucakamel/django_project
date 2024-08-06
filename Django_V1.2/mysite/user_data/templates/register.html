@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<h2>Register</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {% if field.name == 'password1' or field.name == 'password2' %}
+                <div class="input-group">
+                    {{ field }}
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary toggle-password" type="button">
+                            Show
+                        </button>
+                    </div>
+                </div>
+            {% else %}
+                {{ field }}
+            {% endif %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+<script>
+document.querySelectorAll('.toggle-password').forEach(button => {
+    button.addEventListener('click', function() {
+        const input = this.closest('.input-group').querySelector('input[type="password"], input[type="text"]');
+        if (input.type === 'password') {
+            input.type = 'text';
+            this.textContent = 'Hide';
+        } else {
+            input.type = 'password';
+            this.textContent = 'Show';
+        }
+    });
+});
+</script>
+{% endblock %}

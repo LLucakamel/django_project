@@ -1,0 +1,38 @@
+{% load static %}  <!-- Load Django's static file tag library -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">  <!-- Use static tag to link CSS -->
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form class="signup-form" method="post" action="{% url 'signup' %}">  <!-- Ensure the form posts back to the correct URL -->
+            {% csrf_token %}  <!-- Include CSRF token for security -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required maxlength="150">
+                <small class="form-text">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <small class="form-text">Required. Inform a valid email address.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <small class="form-text">Your password can't be too similar to your other personal information.</small>
+                <small class="form-text">Your password must contain at least 8 characters.</small>
+                <small class="form-text">Your password can't be a commonly used password.</small>
+                <small class="form-text">Your password can't be entirely numeric.</small>
+            {{ form.as_p }}  <!-- Render form fields here -->
+            <button type="submit" class="signup-button">Sign up</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+@import url('https://fonts.cdnfonts.com/css/minion-pro');
+body {
+    font-family: Arial, sans-serif;
+    background: url('../images/login_bg.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    height: 560px;
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0; /* Start with an invisible form */
+    transform: translateY(20px); /* Start slightly off position */
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-form {
+    max-width: 300px;
+    margin: auto;
+    color: #fff;
+    text-align: center;
+}
+
+.logo0 {
+    position: relative;
+    right: 30px;
+    top: 20px;
+}
+
+.logo {
+    position: relative;
+    right: 90px;
+    top: 70px;
+}
+
+.tit {
+    position: relative;
+    top: 0px;
+}
+
+.txt1 {
+    position: relative;
+    top: -40px;
+    left: 50px;
+    color: #f37920;
+    font-family: 'Minion Pro', sans-serif;
+}
+
+.txt2 {
+    position: relative;
+    top: -70px;
+    left: 94px;
+    font-family: 'Minion Pro', sans-serif;
+    color: #7d7d7d;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    padding: 10px;
+}
+
+.input-group label {
+    margin-right: 10px;
+    color: #7d7d7d;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #222222;
+    background: #fff;
+    transition: border 0.3s ease-in-out; /* Smooth transition for border changes */
+}
+
+.input-group input:focus {
+    outline: none; /* Removes the default focus outline */
+    border: 2px solid #e65c00; /* Adds a solid border with a custom color when focused */
+    box-shadow: 0 0 8px rgba(230, 92, 0, 0.6); /* Optional: Adds a glow effect */
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(230, 92, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(230, 92, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(230, 92, 0, 0);
+    }
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: 10px;
+    color: #7d7d7d;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #7d7d7d;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #e65c00;
+    color: #fff;
+    transform: translateY(-2px); /* Slightly raise the button */
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #FF6700;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: #fd781e;
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #ccc;
+}
+
+.qwe {
+    border: 0px none;
+}

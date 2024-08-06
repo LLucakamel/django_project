@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Orders</h1>
+
+<ul>
+{% for order in orders %}
+    <li>
+        Order #{{ order.id }} - Status: {{ order.get_status_display }}
+        {% if order.status == 'pending' %}
+            <form method="post" action="{% url 'approve_order' order.id %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Approve</button>
+            </form>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'create_order' %}">Create New Order</a>
+{% endblock %}

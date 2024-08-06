@@ -1,0 +1,9 @@
+
+{% block content %}
+<h2>Are you sure you want to log out?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Log out</button>
+    <a href="{% url 'home' %}">Return to the homepage</a>
+</form>
+{% endblock %}

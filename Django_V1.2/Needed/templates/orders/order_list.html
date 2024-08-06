@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/order_list.css' %}">
+
+    <h2>Material Request</h2>
+    <div class="container">
+      <label class="containerbtn">
+        <input type="checkbox" id="select-all-logs">
+        <span class="checkmark"></span>
+        <span>All Logs</span>
+      </label>
+  
+      <div class="pagination">
+        <span id="page-numbers">Page 1-100</span>
+        <button id="prev-page">&lt;</button>
+        <button id="next-page">&gt;</button>
+      </div>
+      <div class="actionsLPO">
+        <a href="{% url 'orders:create_order' %}">
+          <button id="add-item"><i class="fas fa-plus"></i> Add Material Request</button>
+        </a>
+      </div>
+  
+      <div class="input-group">
+        <select id="filter-input">
+          <option value="all">All</option>
+        </select>
+        <input type="text" id="search-input" placeholder="Search employees...">
+        <input type="text" id="code-input" placeholder="Enter code">
+        <input type="text" id="name-input" placeholder="Enter name">
+      </div>
+  
+      <div class="date-group">
+        <input type="text" id="date-input-1" placeholder="Request date from">
+        <input type="text" id="date-input-2" placeholder="Request date to">
+        <input type="text" id="date-input-3" placeholder="Due date from">
+        <input type="text" id="date-input-4" placeholder="Due date to">
+      </div>
+  
+      <div class="action-buttons">
+        <button id="advanced-search"><i class="fas fa-search"></i> Advanced Search</button>
+        <button id="cancel-filter">Cancel Filter</button>
+        <button id="search-button">Search</button>
+      </div>
+  
+      <div class="advanced-filter-bar" id="advanced-filter-bar">
+        <select id="status-filter">
+            <option value="all">All</option>  <!-- Add this line -->
+            <option value="approved">approved</option>
+            <option value="disapproved">disapproved</option>
+            <option value="pending">pending</option>
+        </select>
+      </div>
+  
+      <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Request Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>{{ order.code }}</td>
+                <td>{{ order.name }}</td>
+                <td>{{ order.request_date }}</td>
+                <td>{{ order.due_date }}</td>
+                <td>{{ order.status }}</td>
+                <td>...</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/order_list.js' %}"></script>
+
+{% endblock %}
